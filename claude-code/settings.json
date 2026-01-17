@@ -29,12 +29,15 @@
     ]
   },
   "hooks": {
-    "Stop": [{
-      "matcher": {},
-      "hooks": [{
-        "type": "command",
-        "command": ".ai-dev-config/shared/session-logger.sh claude-code"
-      }]
-    }]
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".ai-dev-config/shared/session-logger.sh claude-code"
+          }
+        ]
+      }
+    ]
   }
 }
