@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java *)", "Bash(javac *)", "Bash(mvn *)", "Bash(gradle *)",
+      "Bash(sdk *)", "Bash(sdkman-init.sh *)",
+      "Bash(zig *)", "Bash(zig build *)", "Bash(zig test *)", "Bash(zig run *)", "Bash(zig fmt *)", "Bash(zig cc *)",
+      "Bash(node *)", "Bash(npm *)", "Bash(npx *)", "Bash(yarn *)",
+      "Bash(pnpm *)", "Bash(bun *)",
+      "Bash(tsc *)", "Bash(eslint *)", "Bash(prettier *)", "Bash(vite *)", "Bash(webpack *)", "Bash(esbuild *)",
+      "Bash(git *)", "Bash(gh *)",
+      "Bash(docker *)", "Bash(docker-compose *)", "Bash(podman *)",
+      "Bash(make *)", "Bash(cmake *)",
+      "Bash(cargo *)", "Bash(rustc *)", "Bash(rustfmt *)",
+      "Bash(go *)", "Bash(gofmt *)",
+      "Bash(python *)", "Bash(pip *)", "Bash(poetry *)", "Bash(pipenv *)", "Bash(uv *)",
+      "Bash(ls *)", "Bash(ls)", "Bash(pwd)", "Bash(mkdir *)", "Bash(cp *)",
+      "Bash(mv *)", "Bash(rm *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
+      "Bash(less *)", "Bash(more *)",
+      "Bash(find *)", "Bash(grep *)", "Bash(rg *)", "Bash(sed *)", "Bash(awk *)",
+      "Bash(sort *)", "Bash(uniq *)", "Bash(wc *)", "Bash(diff *)", "Bash(patch *)",
+      "Bash(curl *)", "Bash(wget *)", "Bash(jq *)", "Bash(yq *)", "Bash(xargs *)",
+      "Bash(tar *)", "Bash(gzip *)", "Bash(gunzip *)", "Bash(zip *)", "Bash(unzip *)",
+      "Bash(env *)", "Bash(env)", "Bash(export *)", "Bash(source *)",
+      "Bash(which *)", "Bash(whereis *)", "Bash(file *)", "Bash(stat *)", "Bash(realpath *)",
+      "Bash(chmod *)", "Bash(chown *)", "Bash(touch *)", "Bash(ln *)",
+      "Bash(ps *)", "Bash(ps)", "Bash(kill *)", "Bash(top *)", "Bash(htop *)",
+      "Bash(free *)", "Bash(free)", "Bash(df *)", "Bash(df)", "Bash(du *)",
+      "Read", "Write", "Edit", "Glob", "Grep"
+    ]
+  },
+  "hooks": {
+    "Stop": [{
+      "matcher": "*",
+      "command": [".ai-dev-config/shared/session-logger.sh", "claude-code"]
+    }]
+  }
+}

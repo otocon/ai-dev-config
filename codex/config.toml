@@ -1,0 +1,119 @@
+# Codex CLI Configuration
+# This file is merged with ~/.codex/config.toml during installation
+
+[approval]
+# Approval mode: "suggest" | "auto-edit" | "full-auto"
+mode = "auto-edit"
+
+# Commands that are pre-approved for automatic execution
+[approval.allowed_commands]
+# Java Development
+java = true
+javac = true
+mvn = true
+gradle = true
+sdk = true
+
+# Zig Development
+zig = true
+
+# Node.js / Frontend
+node = true
+npm = true
+npx = true
+yarn = true
+pnpm = true
+bun = true
+tsc = true
+eslint = true
+prettier = true
+vite = true
+webpack = true
+esbuild = true
+
+# Git & GitHub
+git = true
+gh = true
+
+# Docker & Containers
+docker = true
+docker-compose = true
+podman = true
+
+# Build Tools
+make = true
+cmake = true
+
+# Rust
+cargo = true
+rustc = true
+rustfmt = true
+
+# Go
+go = true
+gofmt = true
+
+# Python
+python = true
+python3 = true
+pip = true
+pip3 = true
+poetry = true
+pipenv = true
+uv = true
+
+# System Utilities
+ls = true
+pwd = true
+mkdir = true
+cp = true
+mv = true
+rm = true
+cat = true
+head = true
+tail = true
+less = true
+more = true
+find = true
+grep = true
+rg = true
+sed = true
+awk = true
+sort = true
+uniq = true
+wc = true
+diff = true
+patch = true
+curl = true
+wget = true
+jq = true
+yq = true
+xargs = true
+tar = true
+gzip = true
+gunzip = true
+zip = true
+unzip = true
+env = true
+export = true
+source = true
+which = true
+whereis = true
+file = true
+stat = true
+realpath = true
+chmod = true
+chown = true
+touch = true
+ln = true
+ps = true
+kill = true
+free = true
+df = true
+du = true
+
+[logging]
+# Enable session logging
+enabled = true
+# Directory for session logs (relative to project root)
+session_dir = ".ai-sessions"

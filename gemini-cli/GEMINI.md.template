@@ -1,0 +1,43 @@
+# Project Guidelines for Gemini CLI
+
+## Project Overview
+<!-- Describe your project here -->
+
+## Architecture
+<!-- Describe the architecture and key components -->
+
+## Development Workflow
+
+### Build Commands
+- `mvn clean install` - Full build with tests
+- `mvn test` - Run tests only
+- `mvn package -DskipTests` - Package without tests
+
+### Code Style
+<!-- Describe coding conventions and style guidelines -->
+
+## Key Files and Directories
+<!-- List important files and their purposes -->
+
+## Testing
+<!-- Describe testing approach and how to run tests -->
+
+## Session Logging
+Sessions are automatically logged to `.ai-sessions/` directory.
+Each session creates a markdown file with:
+- Original prompt
+- AI-generated specification
+- Files changed
+- Outcome summary
+
+## Pre-Approved Commands
+This project uses policy-based command approval in `.gemini/policies/dev-tools.toml`.
+Pre-approved categories include:
+- Java/Maven/Gradle build tools
+- Git and GitHub CLI
+- Docker and container tools
+- Common shell utilities (ls, grep, find, etc.)
+- Node.js and npm ecosystem
+- Python, Rust, and Go toolchains
+
+See the policies file for the full rule set.

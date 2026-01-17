@@ -1,0 +1,156 @@
+# Pre-Approved Commands Master List
+# This file documents all commands that are pre-approved across AI development tools.
+# Each tool uses its own configuration format, but this serves as the canonical reference.
+
+# =============================================================================
+# Java Development
+# =============================================================================
+java
+javac
+mvn
+mvn clean
+mvn install
+mvn test
+mvn package
+mvn verify
+mvn dependency:*
+gradle
+gradle build
+gradle test
+gradle clean
+gradle run
+sdk
+sdkman-init.sh
+
+# =============================================================================
+# Zig Development
+# =============================================================================
+zig
+zig build
+zig test
+zig run
+zig fmt
+zig cc
+
+# =============================================================================
+# Node.js / Frontend
+# =============================================================================
+node
+npm
+npm install
+npm run
+npm test
+npm build
+npm ci
+npx
+yarn
+pnpm
+bun
+tsc
+eslint
+prettier
+vite
+webpack
+esbuild
+
+# =============================================================================
+# Bash / System Utilities
+# =============================================================================
+# File operations
+ls
+pwd
+mkdir
+cp
+mv
+rm
+cat
+head
+tail
+less
+more
+
+# Text processing
+find
+grep
+rg
+sed
+awk
+sort
+uniq
+wc
+diff
+patch
+
+# Network / Data
+curl
+wget
+jq
+yq
+xargs
+
+# Compression
+tar
+gzip
+gunzip
+zip
+unzip
+
+# Environment
+env
+export
+source
+which
+whereis
+file
+stat
+realpath
+
+# Permissions / Links
+chmod
+chown
+touch
+ln
+
+# Process / System
+ps
+kill
+top
+htop
+free
+df
+du
+
+# =============================================================================
+# Git & DevOps
+# =============================================================================
+git
+gh
+docker
+docker-compose
+podman
+make
+cmake
+
+# =============================================================================
+# Rust
+# =============================================================================
+cargo
+rustc
+rustfmt
+
+# =============================================================================
+# Go
+# =============================================================================
+go
+gofmt
+
+# =============================================================================
+# Python
+# =============================================================================
+python
+python3
+pip
+pip3
+poetry
+pipenv
+uv

@@ -1,0 +1,10 @@
+{
+  "tools": {
+    "shell": {
+      "enabled": true
+    }
+  },
+  "hooks": {
+    "AfterAgent": ".ai-dev-config/shared/session-logger.sh gemini-cli"
+  }
+}

@@ -1,0 +1,277 @@
+# Gemini CLI Policy Rules for Development Tools
+# Each rule defines command approval for run_shell_command tool
+
+# =============================================================================
+# Java Development
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "java "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "javac "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "mvn "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "gradle "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "sdk "
+decision = "allow"
+
+# =============================================================================
+# Zig Development
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "zig "
+decision = "allow"
+
+# =============================================================================
+# Node.js / Frontend
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "node "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "npm "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "npx "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "yarn "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "pnpm "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "bun "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "tsc "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "eslint "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "prettier "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "vite "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "webpack "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "esbuild "
+decision = "allow"
+
+# =============================================================================
+# Git & GitHub
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "git "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "gh "
+decision = "allow"
+
+# =============================================================================
+# Docker & Containers
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "docker "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "docker-compose "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "podman "
+decision = "allow"
+
+# =============================================================================
+# Build Tools
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "make "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "cmake "
+decision = "allow"
+
+# =============================================================================
+# Rust
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "cargo "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "rustc "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "rustfmt "
+decision = "allow"
+
+# =============================================================================
+# Go
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "go "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "gofmt "
+decision = "allow"
+
+# =============================================================================
+# Python
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "python "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "python3 "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "pip "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "pip3 "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "poetry "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "pipenv "
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "uv "
+decision = "allow"
+
+# =============================================================================
+# System Utilities (using regex for multiple commands)
+# =============================================================================
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(ls|pwd|mkdir|cp|mv|rm|cat|head|tail|less|more)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(ls|pwd)$"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(find|grep|rg|sed|awk|sort|uniq|wc|diff|patch)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(curl|wget|jq|yq|xargs)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(tar|gzip|gunzip|zip|unzip)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(env|export|source|which|whereis|file|stat|realpath)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(env)$"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(chmod|chown|touch|ln)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(ps|kill|top|htop|free|df|du)\\s"
+decision = "allow"
+
+[[rule]]
+toolName = "run_shell_command"
+commandRegex = "^(ps|free|df)$"
+decision = "allow"
