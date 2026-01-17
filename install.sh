@@ -15,7 +15,6 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Default options
-LOG_TO_GIT=false
 NO_BACKUP=false
 SPECIFIC_TOOL=""
 
@@ -33,7 +32,6 @@ Usage: $(basename "$0") [OPTIONS]
 Install AI development tool configurations for a project.
 
 Options:
-  --log-to-git      Add .ai-sessions/ to git (default: gitignored)
   --no-backup       Skip backing up existing configurations
   --tool=<name>     Install only specific tool (claude-code|opencode|codex|gemini-cli)
   -h, --help        Show this help message
@@ -41,7 +39,6 @@ Options:
 Examples:
   $(basename "$0")                     # Install all tools
   $(basename "$0") --tool=claude-code  # Install only Claude Code
-  $(basename "$0") --log-to-git        # Include session logs in git
 
 EOF
 }
@@ -50,10 +47,6 @@ EOF
 parse_args() {
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --log-to-git)
-                LOG_TO_GIT=true
-                shift
-                ;;
             --no-backup)
                 NO_BACKUP=true
                 shift
@@ -116,33 +109,6 @@ create_symlink() {
 
     ln -s "$source" "$target"
     print_success "Created symlink: $target -> $source"
-}
-
-# Setup session logging directory
-setup_session_dir() {
-    local project_root="$1"
-    local session_dir="$project_root/.ai-sessions"
-
-    mkdir -p "$session_dir"
-    print_success "Created session logging directory: $session_dir"
-
-    # Add to .gitignore unless --log-to-git is specified
-    local gitignore="$project_root/.gitignore"
-    if [[ "$LOG_TO_GIT" == "false" ]]; then
-        if [[ -f "$gitignore" ]]; then
-            if ! grep -q "^\.ai-sessions/" "$gitignore" 2>/dev/null; then
-                echo -e "\n# AI session logs\n.ai-sessions/" >> "$gitignore"
-                print_success "Added .ai-sessions/ to .gitignore"
-            else
-                print_info ".ai-sessions/ already in .gitignore"
-            fi
-        else
-            echo -e "# AI session logs\n.ai-sessions/" > "$gitignore"
-            print_success "Created .gitignore with .ai-sessions/"
-        fi
-    else
-        print_info "Session logs will be tracked in git (--log-to-git)"
-    fi
 }
 
 # Install Claude Code configuration
@@ -231,13 +197,6 @@ install_codex() {
     print_info "Created local Codex reference at $local_ref"
 }
 
-# Make shared scripts executable
-setup_shared_scripts() {
-    print_info "Setting up shared scripts..."
-    chmod +x "$SCRIPT_DIR/shared/"*.sh 2>/dev/null || true
-    print_success "Shared scripts are executable"
-}
-
 # Print installation summary
 print_summary() {
     local project_root="$1"
@@ -265,13 +224,6 @@ print_summary() {
     fi
 
     echo ""
-    echo "Session logs: $project_root/.ai-sessions/"
-    if [[ "$LOG_TO_GIT" == "true" ]]; then
-        echo "  (tracked in git)"
-    else
-        echo "  (gitignored)"
-    fi
-    echo ""
     echo "To uninstall, run: ./.ai-dev-config/uninstall.sh"
     echo ""
 }
@@ -293,12 +245,6 @@ main() {
         print_error "Cannot find ai-dev-config structure. Are you running from the correct location?"
         exit 1
     fi
-
-    # Setup session directory
-    setup_session_dir "$project_root"
-
-    # Setup shared scripts
-    setup_shared_scripts
 
     # Install tool configurations
     if [[ -z "$SPECIFIC_TOOL" ]]; then

@@ -111,9 +111,3 @@ kill = true
 free = true
 df = true
 du = true
-
-[logging]
-# Enable session logging
-enabled = true
-# Directory for session logs (relative to project root)
-session_dir = ".ai-sessions"

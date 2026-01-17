@@ -27,17 +27,5 @@
       "Bash(free *)", "Bash(free)", "Bash(df *)", "Bash(df)", "Bash(du *)",
       "Read", "Write", "Edit", "Glob", "Grep"
     ]
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".ai-dev-config/shared/session-logger.sh claude-code"
-          }
-        ]
-      }
-    ]
   }
 }

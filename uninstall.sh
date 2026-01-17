@@ -15,7 +15,6 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Default options
-REMOVE_SESSIONS=false
 REMOVE_CODEX=false
 
 # Print colored output
@@ -32,13 +31,11 @@ Usage: $(basename "$0") [OPTIONS]
 Uninstall AI development tool configurations from a project.
 
 Options:
-  --remove-sessions   Also remove .ai-sessions/ directory and logs
   --remove-codex      Also remove Codex config from ~/.codex/
   -h, --help          Show this help message
 
 Examples:
   $(basename "$0")                      # Remove symlinks only
-  $(basename "$0") --remove-sessions    # Also remove session logs
   $(basename "$0") --remove-codex       # Also remove global Codex config
 
 EOF
@@ -48,10 +45,6 @@ EOF
 parse_args() {
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --remove-sessions)
-                REMOVE_SESSIONS=true
-                shift
-                ;;
             --remove-codex)
                 REMOVE_CODEX=true
                 shift
@@ -149,44 +142,6 @@ uninstall_codex() {
     else
         print_info "Global Codex config at ~/.codex/config.toml was not removed."
         print_info "Use --remove-codex to remove it."
-    fi
-}
-
-# Remove session directory
-remove_sessions() {
-    local project_root="$1"
-    local session_dir="$project_root/.ai-sessions"
-
-    if [[ "$REMOVE_SESSIONS" == "true" ]]; then
-        if [[ -d "$session_dir" ]]; then
-            print_warning "Removing session logs directory: $session_dir"
-            rm -rf "$session_dir"
-            print_success "Removed session logs"
-        else
-            print_info "Session directory does not exist"
-        fi
-    else
-        if [[ -d "$session_dir" ]]; then
-            print_info "Session logs preserved at: $session_dir"
-            print_info "Use --remove-sessions to remove them."
-        fi
-    fi
-}
-
-# Clean up .gitignore entry
-cleanup_gitignore() {
-    local project_root="$1"
-    local gitignore="$project_root/.gitignore"
-
-    if [[ -f "$gitignore" ]]; then
-        if grep -q "^\.ai-sessions/" "$gitignore" 2>/dev/null; then
-            # Remove the .ai-sessions/ line and the comment before it
-            sed -i '/^# AI session logs$/d' "$gitignore"
-            sed -i '/^\.ai-sessions\/$/d' "$gitignore"
-            # Remove any trailing empty lines
-            sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$gitignore"
-            print_success "Removed .ai-sessions/ from .gitignore"
-        fi
     fi
 }
 

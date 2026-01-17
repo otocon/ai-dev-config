@@ -22,14 +22,6 @@
 ## Testing
 <!-- Describe testing approach and how to run tests -->
 
-## Session Logging
-Sessions are automatically logged to `.ai-sessions/` directory.
-Each session creates a markdown file with:
-- Original prompt
-- AI-generated specification
-- Files changed
-- Outcome summary
-
 ## Pre-Approved Commands
 This project uses policy-based command approval in `.gemini/policies/dev-tools.toml`.
 Pre-approved categories include:

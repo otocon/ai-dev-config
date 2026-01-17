@@ -96,9 +96,5 @@
       "file:write",
       "file:edit"
     ]
-  },
-  "logging": {
-    "sessionDir": ".ai-sessions",
-    "enabled": true
   }
 }

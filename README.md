@@ -1,6 +1,6 @@
 # AI Dev Config
 
-Shared configuration for AI-powered development tools. This repository provides pre-approved command lists, session logging, and standardized configurations for multiple AI coding assistants.
+Shared configuration for AI-powered development tools. This repository provides pre-approved command lists, and standardized configurations for multiple AI coding assistants.
 
 ## ⚠️ Disclaimer
 
@@ -14,7 +14,6 @@ By using this configuration, you acknowledge the following risks:
 - **Backup bypass:** The `--no-backup` installation flag skips safety backups of existing configurations
 - **Global configuration changes:** Codex installation merges settings into your global `~/.codex/config.toml` file
 - **Configuration overwrite:** Symlinks may overwrite your existing tool configurations (`.claude/`, `.gemini/`, `opencode.json`)
-- **Automatic script execution:** Session logging hooks execute automatically at the end of AI sessions
 
 ### Recommendations
 
@@ -52,7 +51,7 @@ git submodule add <repo-url> .ai-dev-config
 
 ### 3. Start Coding
 
-Your AI tools will now have pre-approved commands and session logging enabled.
+Your AI tools will now have pre-approved commands enabled.
 
 ## Installation Options
 
@@ -60,7 +59,6 @@ Your AI tools will now have pre-approved commands and session logging enabled.
 ./ai-dev-config/install.sh [OPTIONS]
 
 Options:
-  --log-to-git      Add .ai-sessions/ to git (default: gitignored)
   --no-backup       Skip backing up existing configs
   --tool=<name>     Install only specific tool (claude-code|opencode|codex|gemini-cli)
 ```
@@ -73,9 +71,6 @@ Options:
 
 # Install only Claude Code
 ./.ai-dev-config/install.sh --tool=claude-code
-
-# Include session logs in version control
-./.ai-dev-config/install.sh --log-to-git
 ```
 
 ## Uninstallation
@@ -84,14 +79,13 @@ Options:
 ./.ai-dev-config/uninstall.sh [OPTIONS]
 
 Options:
-  --remove-sessions   Also remove .ai-sessions/ directory and logs
   --remove-codex      Also remove Codex config from ~/.codex/
 ```
 
 To fully remove the submodule:
 
 ```bash
-./.ai-dev-config/uninstall.sh --remove-sessions
+./.ai-dev-config/uninstall.sh
 git submodule deinit .ai-dev-config
 git rm .ai-dev-config
 rm -rf .git/modules/.ai-dev-config
@@ -107,8 +101,6 @@ ai-dev-config/
 │
 ├── claude-code/
 │   ├── settings.json             # Pre-approved commands
-│   ├── hooks/
-│   │   └── log-session.sh        # Session logging hook
 │   └── CLAUDE.md.template        # Project guidelines template
 │
 ├── opencode/
@@ -123,12 +115,10 @@ ai-dev-config/
 │   ├── policies/
 │   │   └── dev-tools.toml        # Command approval rules
 │   ├── hooks/
-│   │   └── log-session.sh        # Session logging hook
 │   └── GEMINI.md.template        # Project guidelines template
 │
 └── shared/
-    ├── commands.txt              # Master list (documentation)
-    └── session-logger.sh         # Shared logging logic
+    └──commands.txt              # Master list (documentation)
 ```
 
 ## Pre-Approved Commands
@@ -165,42 +155,6 @@ The following command categories are pre-approved across all tools:
 - **Python**: `python`, `pip`, `poetry`, `pipenv`, `uv`
 
 See `shared/commands.txt` for the complete list.
-
-## Session Logging
-
-Sessions are automatically logged to `.ai-sessions/` with the following format:
-
-**Filename:** `YYYY-MM-DD_HH-MM-SS_<slug>.md`
-
-**Content:**
-```markdown
-# <Task Title>
-
-**Date:** 2026-01-17 14:30:00
-**Tool:** claude-code
-**Model:** claude-opus-4-5
-
-## Prompt
-> [Original user request]
-
-## Specification
-[AI-generated plan or specification]
-
-## Files Changed
-- src/auth/AuthService.java (modified)
-- src/api/UserController.java (created)
-
-## Outcome
-[Brief summary of what was accomplished]
-```
-
-### Session Directory Options
-
-By default, `.ai-sessions/` is added to `.gitignore`. To track sessions in git:
-
-```bash
-./.ai-dev-config/install.sh --log-to-git
-```
 
 ## Customization
 
@@ -265,11 +219,6 @@ After installation, verify the setup:
    # Should execute without permission prompt
    ```
 
-3. **Check session logging:**
-   ```bash
-   ls .ai-sessions/
-   ```
-
 ## Troubleshooting
 
 ### Symlinks not working
@@ -280,10 +229,6 @@ After installation, verify the setup:
 - Verify the symlink points to the correct location
 - Check the tool-specific config syntax
 - Restart the AI tool to reload configuration
-
-### Session logs not created
-- Ensure `.ai-sessions/` directory exists
-- Check that hook scripts are executable: `chmod +x .ai-dev-config/shared/*.sh`
 
 ## Contributing
 
