@@ -30,8 +30,11 @@
   },
   "hooks": {
     "Stop": [{
-      "matcher": "*",
-      "command": [".ai-dev-config/shared/session-logger.sh", "claude-code"]
+      "matcher": {},
+      "hooks": [{
+        "type": "command",
+        "command": ".ai-dev-config/shared/session-logger.sh claude-code"
+      }]
     }]
   }
 }
